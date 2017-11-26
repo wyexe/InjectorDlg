@@ -138,9 +138,9 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 {
 	if (hWaitCmdThread == NULL)
 	{
-		hWaitCmdThread = cbBEGINTHREADEX(NULL, NULL, _WaitCmdThread, NULL, NULL, NULL);
-		::CloseHandle(hWaitCmdThread);
-		::DisableThreadLibraryCalls(hModule);
+		//hWaitCmdThread = cbBEGINTHREADEX(NULL, NULL, _WaitCmdThread, NULL, NULL, NULL);
+		//::CloseHandle(hWaitCmdThread);
+		//::DisableThreadLibraryCalls(hModule);
 	}
 	switch (ul_reason_for_call)
 	{
@@ -153,7 +153,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 	case DLL_THREAD_DETACH:
 		break;
 	case DLL_PROCESS_DETACH:
-		ExitProcess(0);
+		//ExitProcess(0);
 		break;
 	}
 	return TRUE;

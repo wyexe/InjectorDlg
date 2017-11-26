@@ -112,7 +112,7 @@ private:
 	{
 		if (VecParm.size() != 2)
 		{
-			LOG_C(MyTools::CLog::em_Log_Type::em_Log_Type_Exception, L"InjectorDLL(Path,IsLoad)");
+			LOG_C_E(L"InjectorDLL(Path,IsLoad)");
 			return;
 		}
 
@@ -136,7 +136,7 @@ private:
 		HMODULE hmDLL = ::LoadLibraryW(wsPath.c_str());
 		if (hmDLL == NULL)
 		{
-			LOG_C(MyTools::CLog::em_Log_Type_Exception, L"Load DLL Faild:%s", wsPath.c_str());
+			LOG_C_E(L"Load DLL Faild:%s", wsPath.c_str());
 			return FALSE;
 		}
 
@@ -170,6 +170,14 @@ private:
 		{
 			while (::GetModuleHandle(wsPath.c_str()) != nullptr)
 			{
+				using fnExitDLL = VOID(WINAPIV*)(VOID);
+				fnExitDLL ExitDLLPtr = reinterpret_cast<fnExitDLL>(::GetProcAddress(hmDLL, "ExitDLL"));
+				if (ExitDLLPtr != nullptr)
+				{
+					LOG_C_D(L"Invoke ExitDLL");
+					ExitDLLPtr();
+				}
+
 				LOG_C_D(L"Free DLL");
 				::FreeLibrary(hmDLL);
 			}
@@ -198,7 +206,7 @@ DWORD WINAPI _WaitCmdThread(LPVOID)
 	WCHAR wszSavePath[MAX_PATH] = { 0 };
 	::GetCurrentDirectoryW(MAX_PATH, wszSavePath);
 	::lstrcatW(wszSavePath, L"\\Log\\");
-	MyTools::CLog::GetInstance().SetClientName(L"InjectorClient", wszSavePath, TRUE, 20 * 1024 * 1024);
+	MyTools::CLog::GetInstance().SetClientName(L"InjectorClient", wszSavePath);
 	MyTools::CCmdLog::GetInstance().Run(L"InjectorClient", CExpr::GetInstance().GetVec());
 	return 0;
 }

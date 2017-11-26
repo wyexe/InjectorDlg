@@ -78,6 +78,9 @@
     <ClCompile Include="..\..\MyTools\MyTools\CLExpressionCalc.cpp">
       <Filter>Common</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\MyTools\MyTools\TimeTick.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Injector.h">
@@ -144,6 +147,9 @@
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\MyTools\MyTools\CLExpressionCalc.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MyTools\MyTools\TimeTick.h">
       <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>

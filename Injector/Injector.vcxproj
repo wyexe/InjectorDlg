@@ -121,6 +121,7 @@
     <ClCompile Include="..\..\MyTools\MyTools\CmdLog.cpp" />
     <ClCompile Include="..\..\MyTools\MyTools\CPublic.cpp" />
     <ClCompile Include="..\..\MyTools\MyTools\Log.cpp" />
+    <ClCompile Include="..\..\MyTools\MyTools\TimeTick.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Injector.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -145,6 +146,7 @@
     <ClInclude Include="..\..\MyTools\MyTools\CLVector.h" />
     <ClInclude Include="..\..\MyTools\MyTools\CmdLog.h" />
     <ClInclude Include="..\..\MyTools\MyTools\Log.h" />
+    <ClInclude Include="..\..\MyTools\MyTools\TimeTick.h" />
     <ClInclude Include="..\..\MyTools\MyTools\ToolsPublic.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Injector.h" />
